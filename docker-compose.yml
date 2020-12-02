@@ -10,3 +10,11 @@ services:
     volumes: 
       - ./conf:/etc/nginx/conf.d
       - ./html:/usr/share/nginx/html
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    image: "php:7.4-fpm"
+    container_name: php-fpm
+    volumes:
+      - ./html:/usr/share/nginx/html
